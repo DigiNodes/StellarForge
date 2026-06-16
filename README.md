@@ -40,6 +40,75 @@ Just as Laravel accelerated PHP development, Next.js simplified React applicatio
 | Security  | Smart contract tooling      |
 | Examples  | Starter applications        |
 
+## Architecture
+
+```text
+                        StellarForge Platform
+
+┌──────────────────────────────────────────────────────────────┐
+│                      Developer Experience                    │
+│                                                              │
+│  CLI • Project Generator • Templates • Documentation         │
+└──────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌──────────────────────────────────────────────────────────────┐
+│                      Developer SDK Layer                     │
+│                                                              │
+│  TypeScript SDK • Rust SDK • Wallet Integration • APIs       │
+└──────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌──────────────────────────────────────────────────────────────┐
+│                     Infrastructure Layer                     │
+│                                                              │
+│ Workflow Engine │ Event Bus │ Scheduler │ Indexer │ Storage  │
+└──────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌──────────────────────────────────────────────────────────────┐
+│                      Security Layer                          │
+│                                                              │
+│ Static Analysis • Contract Validation • Testing • Auditing   │
+└──────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌──────────────────────────────────────────────────────────────┐
+│                    Soroban Smart Contracts                   │
+└──────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌──────────────────────────────────────────────────────────────┐
+│                      Stellar Network                         │
+└──────────────────────────────────────────────────────────────┘
+```
+
+## Roadmap
+
+### Phase 1 (MVP)
+
+stellarforge-cli
+
+stellarforge-sdk
+
+stellarforge-workflows
+
+stellarforge-examples
+
+## Repository Structure
+
+stellarforge-cli
+
+stellarforge-sdk
+
+stellarforge-workflows
+
+stellarforge-indexer
+
+stellarforge-security
+
+stellarforge-examples
+
 ## Contributing
 
 CONTRIBUTING.md
@@ -47,3 +116,9 @@ CONTRIBUTING.md
 CODE_OF_CONDUCT.md
 
 SECURITY.md
+
+CHANGELOG.md
+
+LICENSE
+
+
