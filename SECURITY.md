@@ -1,39 +1,64 @@
-# Security Policy
+# StellarForge Security Policy
 
-Thank you for helping keep StellarForge secure.
-
-We welcome responsible security research and appreciate reports of potential vulnerabilities affecting any StellarForge repository or module.
+Security is a shared StellarForge responsibility. This repository defines project-level expectations; each implementation repository owns its component-specific security controls and vulnerability handling.
 
 ## Reporting a Vulnerability
 
-If you discover a security issue, please report it privately by creating a **GitHub Private Vulnerability Report (GitHub Security Advisory)** for the affected repository.
+Do **not** open a public issue or governance pull request for a suspected vulnerability.
 
-Please include, where possible:
+Report the vulnerability privately through GitHub Private Vulnerability Reporting / Security Advisories in the affected implementation repository.
 
-- A description of the vulnerability.
-- Steps to reproduce the issue.
-- The affected module or component.
-- The potential impact.
-- Any suggested mitigation or fix (optional).
+For the active CLI, report against:
+
+- [DigiNodes/stellarforge-cli](https://github.com/DigiNodes/stellarforge-cli)
+
+If the affected component cannot be identified, contact a Project Maintainer privately and provide only the minimum information necessary to route the report.
 
 ## Scope
 
-This policy applies to all official StellarForge repositories, including but not limited to:
+This policy applies to official StellarForge repositories and project-controlled modules.
 
-- stellarforge-cli
-- stellarforge-sdk
-- stellarforge-workflows
-- stellarforge-examples
+Currently active:
 
-Additional repositories added under the StellarForge project will also follow this policy.
+- `DigiNodes/StellarForge` — governance and coordination;
+- `DigiNodes/stellarforge-cli` — CLI implementation.
 
-## Our Commitment
+Other module names in the roadmap are planned and should not be treated as active repositories until listed as active in [REPOSITORIES.md](./REPOSITORIES.md).
 
-We aim to:
+## Shared Security Expectations
 
-- Acknowledge reports as soon as reasonably possible.
-- Investigate and validate reported issues.
-- Work collaboratively with reporters throughout the resolution process.
-- Publish fixes and security advisories when appropriate.
+Implementation repositories should adopt controls appropriate to their risk, including:
 
-We appreciate everyone who helps improve the security and reliability of StellarForge.
+- least-privilege GitHub Actions permissions;
+- pinned or otherwise controlled CI dependencies;
+- reproducible dependency installation;
+- no secrets in pull-request workflows;
+- protected release credentials/environments;
+- safe subprocess handling;
+- explicit network selection for sensitive operations;
+- no logging of private keys, seed phrases, tokens, or credentials;
+- dependency and static-analysis checks where supported;
+- documented vulnerability response.
+
+## Stellar-Specific Boundaries
+
+StellarForge should avoid taking custody of signing material unless a future component explicitly requires and documents that responsibility.
+
+Developer tooling should prefer named identities managed by established Stellar tooling over accepting raw private keys or seed phrases.
+
+Mainnet-sensitive actions must be explicit and separately reviewed; Mainnet must not become an accidental default.
+
+## Coordinated Response
+
+Maintainers should:
+
+1. acknowledge and triage a private report;
+2. identify affected repositories and versions;
+3. limit disclosure while remediation is in progress;
+4. prepare and validate a fix;
+5. publish advisories and upgrade guidance when appropriate;
+6. coordinate fixes across repositories when a shared contract is affected.
+
+## Supported Versions
+
+Each implementation repository defines its own supported versions. This governance repository does not override component support windows.
